@@ -8,10 +8,12 @@
 			
 import pygame,sys
 from pygame.locals import *
+
+
 pygame.init()
 
 #Variables Global
-width=1200
+WIDTH = 1200
 height=600
 level=0
 fps=25
@@ -37,7 +39,7 @@ class ufo:
     def __init__(self):
         self.image=load_image("ImagesSprites/Ufo.png")
         self.imagerect=self.image.get_rect()
-        self.imagerect.right=width
+        self.imagerect.right=WIDTH 
         self.imagerect.top=height/2
 
     def update(self):
@@ -56,7 +58,7 @@ class ufo:
     def return_height(self):
         return self.imagerect.top
 
-#Class laser
+
 class laser:
     laserspeed=20
 
@@ -65,7 +67,7 @@ class laser:
         self.imagerect=self.image.get_rect()
         self.height=ufo.return_height()+20
         self.surface=pygame.transform.scale(self.image,(20,20))
-        self.imagerect=pygame.Rect(width-106,self.height,20,20)
+        self.imagerect=pygame.Rect(WIDTH - 106,self.height,20,20)
     def update(self):
         self.imagerect.left-=self.laserspeed
 
@@ -147,7 +149,7 @@ def drawtext(text,font,x,y,surface):
 
 #Main Program
 clock=pygame.time.Clock()
-canvas=pygame.display.set_mode((width,height),FULLSCREEN)
+canvas=pygame.display.set_mode((WIDTH , height),FULLSCREEN)
 pygame.display.set_caption("TheInvasion")
 font=pygame.font.SysFont(None,48)
 scorefont=pygame.font.SysFont(None,30)
@@ -156,11 +158,11 @@ scorefont=pygame.font.SysFont(None,30)
 endobj=load_image('ImagesSprites/End.png')
 end=endobj.get_rect()
 end.centery=height/2
-end.centerx=width/2
+end.centerx=WIDTH / 2
 
 startobj=load_image('ImagesSprites/Start.png')
 start=startobj.get_rect()
-start.centerx=width/2
+start.centerx=WIDTH / 2
 start.centery=height/2
 
 clobrickobj=load_image('ImagesSprites/Clouds.png')
@@ -231,7 +233,7 @@ while True:
         canvas.blit(player.image,player.imagerect)
         canvas.blit(ufo.image,ufo.imagerect)
 
-        drawtext('Score : %s | Top score : %s | Level : %s' %(player.score, topscore, level), scorefont, width/2, clobrick.bottom + 10,canvas)
+        drawtext('Score : %s | Top score : %s | Level : %s' %(player.score, topscore, level), scorefont, WIDTH / 2, clobrick.bottom + 10,canvas)
 
         for f in laser_list:
             canvas.blit(f.surface, f.imagerect)
