@@ -1,0 +1,54 @@
+@startuml
+class ufo {
+    image: Surface
+    imagerect: Rect
+    down, up: bool
+    __init__()
+    update()
+    return_height(): int
+}
+class laser {
+    laserspeed: int
+    height: int
+    surface: Surface
+    imagerect: Rect
+    __init__()
+    update()
+}
+class plane {
+    image: Surface
+    imagerect: Rect
+    score: int
+    __init__()
+    update()
+}
+class _
+{
+    width, height, level, fps, add: int
+    black, green, white: tuple[3]
+    fond, icon_32x32: Surface
+    clock: Clock
+    canvas: Surface
+    font, scorefont: Font
+    endobj: Surface
+    end: Rect
+    startobj: Surface
+    start: Rect
+    clobrickobj: Surface
+    clobrick: Rect
+    earthbrickobj: Surface
+    earthbrick: Rect
+    topscore: int
+    moveup, movedown, gravity: bool
+    addcounter: int
+    terminate()
+    waitforkey()
+    laserhitsplane(playerrect,laser): bool
+    load_image(path): Surface
+    check_level(score)
+    drawtext(text,font,x,y,surface)
+}
+_--"ufo"ufo
+_--"player"plane
+_*--"laser_list"laser
+@enduml
