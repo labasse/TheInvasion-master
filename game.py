@@ -115,7 +115,7 @@ def laserhitsplane(playerrect,laser):
             return True
         return False
 
-def load_image(path):
+def load_image(path: str) -> pygame.Surface:
     return pygame.image.load(path)
 
 def check_level(score):
